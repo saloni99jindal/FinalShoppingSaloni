@@ -1,0 +1,630 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="dbProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblCart">
+    <Key>
+      <PropertyRef Name="cartid" />
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="cartid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="productid" Type="Int32" Nullable="false" />
+    <Property Name="cartquantity" Type="Int32" />
+    <NavigationProperty Name="tblProduct" Relationship="Self.FK__tblCart__product__33D4B598" FromRole="tblCart" ToRole="tblProduct" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblCart__userema__32E0915F" FromRole="tblCart" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblCategory">
+    <Key>
+      <PropertyRef Name="categoryid" />
+    </Key>
+    <Property Name="categoryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="categorydescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProducts" Relationship="Self.FK__tblProduc__categ__300424B4" FromRole="tblCategory" ToRole="tblProduct" />
+  </EntityType>
+  <EntityType Name="tblCompare">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_id" Type="Int32" />
+    <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProduct" Relationship="Self.FK__tblCompar__Produ__440B1D61" FromRole="tblCompare" ToRole="tblProduct" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblCompar__usere__44FF419A" FromRole="tblCompare" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblOrder">
+    <Key>
+      <PropertyRef Name="orderid" />
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="orderdate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="productid" Type="Int32" Nullable="false" />
+    <Property Name="retailerid" Type="Int32" />
+    <Property Name="orderquantity" Type="Int32" />
+    <Property Name="orderprice" Type="Double" />
+    <NavigationProperty Name="tblProduct" Relationship="Self.FK__tblOrder__produc__3C69FB99" FromRole="tblOrder" ToRole="tblProduct" />
+    <NavigationProperty Name="tblRetailer" Relationship="Self.FK__tblOrder__retail__3D5E1FD2" FromRole="tblOrder" ToRole="tblRetailer" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblOrder__userem__3B75D760" FromRole="tblOrder" ToRole="tblUser" />
+  </EntityType>
+  <EntityType Name="tblProduct">
+    <Key>
+      <PropertyRef Name="productid" />
+    </Key>
+    <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="productname" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="productprice" Type="Double" />
+    <Property Name="productquantity" Type="Int32" />
+    <Property Name="productdescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="productbrand" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="productimage1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="productnotification" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+    <Property Name="productstatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="retailerid" Type="Int32" />
+    <Property Name="categoryid" Type="Int32" />
+    <NavigationProperty Name="tblCarts" Relationship="Self.FK__tblCart__product__33D4B598" FromRole="tblProduct" ToRole="tblCart" />
+    <NavigationProperty Name="tblCategory" Relationship="Self.FK__tblProduc__categ__300424B4" FromRole="tblProduct" ToRole="tblCategory" />
+    <NavigationProperty Name="tblCompares" Relationship="Self.FK__tblCompar__Produ__440B1D61" FromRole="tblProduct" ToRole="tblCompare" />
+    <NavigationProperty Name="tblOrders" Relationship="Self.FK__tblOrder__produc__3C69FB99" FromRole="tblProduct" ToRole="tblOrder" />
+    <NavigationProperty Name="tblRetailer" Relationship="Self.FK__tblProduc__retai__2F10007B" FromRole="tblProduct" ToRole="tblRetailer" />
+    <NavigationProperty Name="tblWishlists" Relationship="Self.FK__tblWishli__Produ__403A8C7D" FromRole="tblProduct" ToRole="tblWishlist" />
+  </EntityType>
+  <EntityType Name="tblRetailer">
+    <Key>
+      <PropertyRef Name="retailerid" />
+    </Key>
+    <Property Name="retailerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="retailername" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="retaileremail" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="retailerpassword" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="approved" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblOrders" Relationship="Self.FK__tblOrder__retail__3D5E1FD2" FromRole="tblRetailer" ToRole="tblOrder" />
+    <NavigationProperty Name="tblProducts" Relationship="Self.FK__tblProduc__retai__2F10007B" FromRole="tblRetailer" ToRole="tblProduct" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="useremail" />
+    </Key>
+    <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userphone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userpassword" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="userapartment" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userstreet" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="usertown" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userstate" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="userpincode" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usercountry" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="tblCarts" Relationship="Self.FK__tblCart__userema__32E0915F" FromRole="tblUser" ToRole="tblCart" />
+    <NavigationProperty Name="tblCompares" Relationship="Self.FK__tblCompar__usere__44FF419A" FromRole="tblUser" ToRole="tblCompare" />
+    <NavigationProperty Name="tblOrders" Relationship="Self.FK__tblOrder__userem__3B75D760" FromRole="tblUser" ToRole="tblOrder" />
+    <NavigationProperty Name="tblWishlists" Relationship="Self.FK__tblWishli__usere__412EB0B6" FromRole="tblUser" ToRole="tblWishlist" />
+  </EntityType>
+  <EntityType Name="tblWishlist">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Product_id" Type="Int32" />
+    <Property Name="useremail" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblProduct" Relationship="Self.FK__tblWishli__Produ__403A8C7D" FromRole="tblWishlist" ToRole="tblProduct" />
+    <NavigationProperty Name="tblUser" Relationship="Self.FK__tblWishli__usere__412EB0B6" FromRole="tblWishlist" ToRole="tblUser" />
+  </EntityType>
+  <Association Name="FK__tblCart__product__33D4B598">
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblCart" Type="Self.tblCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="tblCart">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblCart__userema__32E0915F">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblCart" Type="Self.tblCart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="useremail" />
+      </Principal>
+      <Dependent Role="tblCart">
+        <PropertyRef Name="useremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblProduc__categ__300424B4">
+    <End Role="tblCategory" Type="Self.tblCategory" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblCategory">
+        <PropertyRef Name="categoryid" />
+      </Principal>
+      <Dependent Role="tblProduct">
+        <PropertyRef Name="categoryid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblCompar__Produ__440B1D61">
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblCompare" Type="Self.tblCompare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="tblCompare">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblCompar__usere__44FF419A">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblCompare" Type="Self.tblCompare" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="useremail" />
+      </Principal>
+      <Dependent Role="tblCompare">
+        <PropertyRef Name="useremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblOrder__produc__3C69FB99">
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="productid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblOrder__retail__3D5E1FD2">
+    <End Role="tblRetailer" Type="Self.tblRetailer" Multiplicity="0..1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRetailer">
+        <PropertyRef Name="retailerid" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="retailerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblOrder__userem__3B75D760">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1" />
+    <End Role="tblOrder" Type="Self.tblOrder" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="useremail" />
+      </Principal>
+      <Dependent Role="tblOrder">
+        <PropertyRef Name="useremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblProduc__retai__2F10007B">
+    <End Role="tblRetailer" Type="Self.tblRetailer" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblRetailer">
+        <PropertyRef Name="retailerid" />
+      </Principal>
+      <Dependent Role="tblProduct">
+        <PropertyRef Name="retailerid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblWishli__Produ__403A8C7D">
+    <End Role="tblProduct" Type="Self.tblProduct" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblWishlist" Type="Self.tblWishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblProduct">
+        <PropertyRef Name="productid" />
+      </Principal>
+      <Dependent Role="tblWishlist">
+        <PropertyRef Name="Product_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__tblWishli__usere__412EB0B6">
+    <End Role="tblUser" Type="Self.tblUser" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="tblWishlist" Type="Self.tblWishlist" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblUser">
+        <PropertyRef Name="useremail" />
+      </Principal>
+      <Dependent Role="tblWishlist">
+        <PropertyRef Name="useremail" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="dbProjectEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblCarts" EntityType="Self.tblCart" />
+    <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
+    <EntitySet Name="tblCompares" EntityType="Self.tblCompare" />
+    <EntitySet Name="tblOrders" EntityType="Self.tblOrder" />
+    <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+    <EntitySet Name="tblRetailers" EntityType="Self.tblRetailer" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="tblWishlists" EntityType="Self.tblWishlist" />
+    <AssociationSet Name="FK__tblCart__product__33D4B598" Association="Self.FK__tblCart__product__33D4B598">
+      <End Role="tblProduct" EntitySet="tblProducts" />
+      <End Role="tblCart" EntitySet="tblCarts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblCart__userema__32E0915F" Association="Self.FK__tblCart__userema__32E0915F">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblCart" EntitySet="tblCarts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblProduc__categ__300424B4" Association="Self.FK__tblProduc__categ__300424B4">
+      <End Role="tblCategory" EntitySet="tblCategories" />
+      <End Role="tblProduct" EntitySet="tblProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblCompar__Produ__440B1D61" Association="Self.FK__tblCompar__Produ__440B1D61">
+      <End Role="tblProduct" EntitySet="tblProducts" />
+      <End Role="tblCompare" EntitySet="tblCompares" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblCompar__usere__44FF419A" Association="Self.FK__tblCompar__usere__44FF419A">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblCompare" EntitySet="tblCompares" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblOrder__produc__3C69FB99" Association="Self.FK__tblOrder__produc__3C69FB99">
+      <End Role="tblProduct" EntitySet="tblProducts" />
+      <End Role="tblOrder" EntitySet="tblOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblOrder__retail__3D5E1FD2" Association="Self.FK__tblOrder__retail__3D5E1FD2">
+      <End Role="tblRetailer" EntitySet="tblRetailers" />
+      <End Role="tblOrder" EntitySet="tblOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblOrder__userem__3B75D760" Association="Self.FK__tblOrder__userem__3B75D760">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblOrder" EntitySet="tblOrders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblProduc__retai__2F10007B" Association="Self.FK__tblProduc__retai__2F10007B">
+      <End Role="tblRetailer" EntitySet="tblRetailers" />
+      <End Role="tblProduct" EntitySet="tblProducts" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblWishli__Produ__403A8C7D" Association="Self.FK__tblWishli__Produ__403A8C7D">
+      <End Role="tblProduct" EntitySet="tblProducts" />
+      <End Role="tblWishlist" EntitySet="tblWishlists" />
+    </AssociationSet>
+    <AssociationSet Name="FK__tblWishli__usere__412EB0B6" Association="Self.FK__tblWishli__usere__412EB0B6">
+      <End Role="tblUser" EntitySet="tblUsers" />
+      <End Role="tblWishlist" EntitySet="tblWishlists" />
+    </AssociationSet>
+    <FunctionImport Name="proc_Add_To_Wishlist">
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+      <Parameter Name="useremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Approve_Product">
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Approve_Retailer">
+      <Parameter Name="retailerid" Mode="In" Type="Int32" />
+      <Parameter Name="retaileremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Changepass">
+      <Parameter Name="rmail" Mode="In" Type="String" />
+      <Parameter Name="rpass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_DisplayProducts" ReturnType="Collection(dbProjectModel.proc_DisplayProducts_Result)">
+      <Parameter Name="rmail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_DisplayRetailerDetails" ReturnType="Collection(dbProjectModel.proc_DisplayRetailerDetails_Result)">
+      <Parameter Name="rmail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Get_All_Retailers" ReturnType="Collection(dbProjectModel.proc_Get_All_Retailers_Result)" />
+    <FunctionImport Name="proc_Get_AllProducts" ReturnType="Collection(dbProjectModel.proc_Get_AllProducts_Result)" />
+    <FunctionImport Name="proc_Get_Cart_Total" ReturnType="Collection(dbProjectModel.proc_Get_Cart_Total_Result)">
+      <Parameter Name="useremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Get_Categories" ReturnType="Collection(dbProjectModel.proc_Get_Categories_Result)" />
+    <FunctionImport Name="proc_Get_Pending_Retailers" ReturnType="Collection(dbProjectModel.proc_Get_Pending_Retailers_Result)" />
+    <FunctionImport Name="proc_Get_Profile_User" ReturnType="Collection(dbProjectModel.proc_Get_Profile_User_Result)">
+      <Parameter Name="useremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Get_User_Orders" ReturnType="Collection(dbProjectModel.proc_Get_User_Orders_Result)">
+      <Parameter Name="useremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Get_User_Orders1" ReturnType="Collection(dbProjectModel.proc_Get_User_Orders1_Result)">
+      <Parameter Name="useremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Get_WishList" ReturnType="Collection(dbProjectModel.proc_Get_WishList_Result)">
+      <Parameter Name="useremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_GetCart" ReturnType="Collection(dbProjectModel.proc_GetCart_Result)">
+      <Parameter Name="useremail" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Insert_Category">
+      <Parameter Name="categoryname" Mode="In" Type="String" />
+      <Parameter Name="description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Insert_Into_Cart">
+      <Parameter Name="useremail" Mode="In" Type="String" />
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+      <Parameter Name="cartquantity" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Insert_Order">
+      <Parameter Name="orderdate" Mode="In" Type="String" />
+      <Parameter Name="useremail" Mode="In" Type="String" />
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+      <Parameter Name="retailerid" Mode="In" Type="Int32" />
+      <Parameter Name="orderquantity" Mode="In" Type="Int32" />
+      <Parameter Name="orderprice" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Pending_Products" ReturnType="Collection(dbProjectModel.proc_Pending_Products_Result)" />
+    <FunctionImport Name="proc_Reject_Product">
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Remove_From_Cart">
+      <Parameter Name="cartid" Mode="In" Type="Int32" />
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Remove_From_Wishlist">
+      <Parameter Name="wishlistid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Remove_Product">
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_RemoveProduct">
+      <Parameter Name="pid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_RetailLoginCheck" ReturnType="Collection(dbProjectModel.proc_RetailLoginCheck_Result)">
+      <Parameter Name="rmail" Mode="In" Type="String" />
+      <Parameter Name="pass" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Search_Result" ReturnType="Collection(dbProjectModel.proc_Search_Result_Result)">
+      <Parameter Name="search" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="proc_Update_Cart">
+      <Parameter Name="cartid" Mode="In" Type="Int32" />
+      <Parameter Name="productid" Mode="In" Type="Int32" />
+      <Parameter Name="quantity" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="proc_UpdateProduct">
+      <Parameter Name="rmail" Mode="In" Type="String" />
+      <Parameter Name="pprice" Mode="In" Type="Double" />
+      <Parameter Name="pquantity" Mode="In" Type="Int32" />
+      <Parameter Name="pdescrip" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetAllProduct" ReturnType="Collection(dbProjectModel.sp_GetAllProduct_Result)" />
+    <FunctionImport Name="sp_GetPdtByCategory" ReturnType="Collection(dbProjectModel.sp_GetPdtByCategory_Result)">
+      <Parameter Name="cname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetPdtByPrice" ReturnType="Collection(dbProjectModel.sp_GetPdtByPrice_Result)">
+      <Parameter Name="Lower" Mode="In" Type="Double" />
+      <Parameter Name="Upper" Mode="In" Type="Double" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetPdtByPriceCategory" ReturnType="Collection(dbProjectModel.sp_GetPdtByPriceCategory_Result)">
+      <Parameter Name="Lower" Mode="In" Type="Double" />
+      <Parameter Name="Upper" Mode="In" Type="Double" />
+      <Parameter Name="Cname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_SortByPriceAsc" ReturnType="Collection(dbProjectModel.sp_SortByPriceAsc_Result)" />
+    <FunctionImport Name="sp_SortByPriceDesc" ReturnType="Collection(dbProjectModel.sp_SortByPriceDesc_Result)" />
+  </EntityContainer>
+  <ComplexType Name="proc_DisplayProducts_Result">
+    <Property Type="Int32" Name="productid" Nullable="false" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="productstatus" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="categoryname" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="proc_DisplayRetailerDetails_Result">
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="useremail" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="orderquantity" Nullable="true" />
+    <Property Type="String" Name="productstatus" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_All_Retailers_Result">
+    <Property Type="Int32" Name="retailerid" Nullable="false" />
+    <Property Type="String" Name="retailername" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retailerpassword" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="approved" Nullable="false" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_AllProducts_Result">
+    <Property Type="Int32" Name="productid" Nullable="false" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productnotification" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="categoryname" Nullable="false" />
+    <Property Type="Int32" Name="retailerid" Nullable="false" />
+    <Property Type="String" Name="retailername" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_Cart_Total_Result">
+    <Property Type="Double" Name="Total" Nullable="true" />
+    <Property Type="Int32" Name="itemscount" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_Categories_Result">
+    <Property Type="Int32" Name="categoryid" Nullable="false" />
+    <Property Type="String" Name="categoryname" Nullable="false" />
+    <Property Type="String" Name="categorydescription" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_Pending_Retailers_Result">
+    <Property Type="Int32" Name="retailerid" Nullable="false" />
+    <Property Type="String" Name="retailername" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_Profile_User_Result">
+    <Property Type="String" Name="useremail" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userphone" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="userpassword" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="userapartment" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userstreet" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="usertown" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userstate" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userpincode" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="usercountry" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_User_Orders_Result">
+    <Property Type="String" Name="useremail" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userphone" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="userapartment" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userstreet" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="usertown" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userstate" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userpincode" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="usercountry" Nullable="false" MaxLength="40" />
+    <Property Type="Int32" Name="orderid" Nullable="false" />
+    <Property Type="String" Name="orderdate" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="Int32" Name="orderquantity" Nullable="true" />
+    <Property Type="Double" Name="orderprice" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_User_Orders1_Result">
+    <Property Type="String" Name="useremail" Nullable="false" MaxLength="255" />
+    <Property Type="String" Name="username" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userphone" Nullable="false" MaxLength="15" />
+    <Property Type="String" Name="userapartment" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userstreet" Nullable="true" MaxLength="40" />
+    <Property Type="String" Name="usertown" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userstate" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="userpincode" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="usercountry" Nullable="false" MaxLength="40" />
+    <Property Type="Int32" Name="orderid" Nullable="false" />
+    <Property Type="String" Name="orderdate" Nullable="false" MaxLength="20" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="Int32" Name="orderquantity" Nullable="true" />
+    <Property Type="Double" Name="orderprice" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_Get_WishList_Result">
+    <Property Type="Int32" Name="productid" Nullable="false" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="productnotification" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="categoryname" Nullable="false" />
+    <Property Type="Int32" Name="retailerid" Nullable="false" />
+    <Property Type="String" Name="retailername" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="proc_GetCart_Result">
+    <Property Type="Int32" Name="productid" Nullable="false" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="String" Name="categoryname" Nullable="false" />
+    <Property Type="String" Name="useremail" Nullable="true" MaxLength="255" />
+    <Property Type="Int32" Name="cartquantity" Nullable="true" />
+    <Property Type="Int32" Name="retailerid" Nullable="false" />
+    <Property Type="String" Name="retailername" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+    <Property Type="Int32" Name="cartid" Nullable="false" />
+    <Property Type="Double" Name="total" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="proc_Pending_Products_Result">
+    <Property Type="Int32" Name="productid" Nullable="false" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="productnotification" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="categoryname" Nullable="false" />
+    <Property Type="Int32" Name="retailerid" Nullable="false" />
+    <Property Type="String" Name="retailername" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="proc_RetailLoginCheck_Result">
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retailerpassword" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="proc_Search_Result_Result">
+    <Property Type="Int32" Name="productid" Nullable="false" />
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productbrand" Nullable="true" MaxLength="45" />
+    <Property Type="String" Name="categoryname" Nullable="false" />
+    <Property Type="Int32" Name="retailerid" Nullable="false" />
+    <Property Type="String" Name="retailername" Nullable="false" MaxLength="40" />
+    <Property Type="String" Name="retaileremail" Nullable="false" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="sp_GetAllProduct_Result">
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetPdtByCategory_Result">
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetPdtByPrice_Result">
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetPdtByPriceCategory_Result">
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_SortByPriceAsc_Result">
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_SortByPriceDesc_Result">
+    <Property Type="String" Name="productname" Nullable="true" />
+    <Property Type="Double" Name="productprice" Nullable="true" />
+    <Property Type="Int32" Name="productquantity" Nullable="true" />
+    <Property Type="String" Name="productdescription" Nullable="true" />
+    <Property Type="String" Name="productimage1" Nullable="true" />
+  </ComplexType>
+</Schema>

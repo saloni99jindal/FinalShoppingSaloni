@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f76937780714f90bb436270b10a94a9" Name="Diagram1">
+        <EntityTypeShape EntityType="dbProjectModel.tblCart" Width="1.5" PointX="8.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbProjectModel.tblCategory" Width="1.5" PointX="3.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbProjectModel.tblCompare" Width="1.5" PointX="8.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbProjectModel.tblOrder" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbProjectModel.tblProduct" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbProjectModel.tblRetailer" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbProjectModel.tblUser" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbProjectModel.tblWishlist" Width="1.5" PointX="8.25" PointY="9.125" IsExpanded="true" />
+        <AssociationConnector Association="dbProjectModel.FK__tblCart__product__33D4B598" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblCart__userema__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblProduc__categ__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblCompar__Produ__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblCompar__usere__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblOrder__produc__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblOrder__retail__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblOrder__userem__3B75D760" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblProduc__retai__2F10007B" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblWishli__Produ__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="dbProjectModel.FK__tblWishli__usere__412EB0B6" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
