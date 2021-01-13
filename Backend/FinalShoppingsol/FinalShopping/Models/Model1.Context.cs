@@ -402,5 +402,10 @@ namespace FinalShopping.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SortByPriceDesc_Result>("sp_SortByPriceDesc");
         }
+    
+        public virtual ObjectResult<string> sp_getCat()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("sp_getCat");
+        }
     }
 }

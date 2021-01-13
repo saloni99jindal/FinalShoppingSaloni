@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="dbProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="dbProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblCart">
           <Key>
             <PropertyRef Name="cartid" />
@@ -337,6 +337,7 @@
           <Parameter Name="pdescrip" Type="nvarchar(max)" Mode="In" />
         </Function>
         <Function Name="sp_GetAllProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_getCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_GetPdtByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="cname" Type="nvarchar(max)" Mode="In" />
         </Function>
@@ -405,8 +406,7 @@
             <End Role="tblWishlist" EntitySet="tblWishlist" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="dbProjectModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -726,7 +726,7 @@
             <Parameter Name="useremail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Approve_Product">
-            <Parameter Name="productid" Mode="In" Type="Int32" />
+          <Parameter Name="productid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_Approve_Retailer">
             <Parameter Name="retailerid" Mode="In" Type="Int32" />
@@ -737,32 +737,32 @@
             <Parameter Name="rpass" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_DisplayProducts" ReturnType="Collection(dbProjectModel.proc_DisplayProducts_Result)">
-            <Parameter Name="rmail" Mode="In" Type="String" />
+          <Parameter Name="rmail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_DisplayRetailerDetails" ReturnType="Collection(dbProjectModel.proc_DisplayRetailerDetails_Result)">
-            <Parameter Name="rmail" Mode="In" Type="String" />
+          <Parameter Name="rmail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Get_All_Retailers" ReturnType="Collection(dbProjectModel.proc_Get_All_Retailers_Result)" />
           <FunctionImport Name="proc_Get_AllProducts" ReturnType="Collection(dbProjectModel.proc_Get_AllProducts_Result)" />
           <FunctionImport Name="proc_Get_Cart_Total" ReturnType="Collection(dbProjectModel.proc_Get_Cart_Total_Result)">
-            <Parameter Name="useremail" Mode="In" Type="String" />
+          <Parameter Name="useremail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Get_Categories" ReturnType="Collection(dbProjectModel.proc_Get_Categories_Result)" />
           <FunctionImport Name="proc_Get_Pending_Retailers" ReturnType="Collection(dbProjectModel.proc_Get_Pending_Retailers_Result)" />
           <FunctionImport Name="proc_Get_Profile_User" ReturnType="Collection(dbProjectModel.proc_Get_Profile_User_Result)">
-            <Parameter Name="useremail" Mode="In" Type="String" />
+          <Parameter Name="useremail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Get_User_Orders" ReturnType="Collection(dbProjectModel.proc_Get_User_Orders_Result)">
-            <Parameter Name="useremail" Mode="In" Type="String" />
+          <Parameter Name="useremail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Get_User_Orders1" ReturnType="Collection(dbProjectModel.proc_Get_User_Orders1_Result)">
-            <Parameter Name="useremail" Mode="In" Type="String" />
+          <Parameter Name="useremail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Get_WishList" ReturnType="Collection(dbProjectModel.proc_Get_WishList_Result)">
-            <Parameter Name="useremail" Mode="In" Type="String" />
+          <Parameter Name="useremail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_GetCart" ReturnType="Collection(dbProjectModel.proc_GetCart_Result)">
-            <Parameter Name="useremail" Mode="In" Type="String" />
+          <Parameter Name="useremail" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Insert_Category">
             <Parameter Name="categoryname" Mode="In" Type="String" />
@@ -783,27 +783,27 @@
           </FunctionImport>
           <FunctionImport Name="proc_Pending_Products" ReturnType="Collection(dbProjectModel.proc_Pending_Products_Result)" />
           <FunctionImport Name="proc_Reject_Product">
-            <Parameter Name="productid" Mode="In" Type="Int32" />
+          <Parameter Name="productid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_Remove_From_Cart">
             <Parameter Name="cartid" Mode="In" Type="Int32" />
             <Parameter Name="productid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_Remove_From_Wishlist">
-            <Parameter Name="wishlistid" Mode="In" Type="Int32" />
+          <Parameter Name="wishlistid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_Remove_Product">
-            <Parameter Name="productid" Mode="In" Type="Int32" />
+          <Parameter Name="productid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_RemoveProduct">
-            <Parameter Name="pid" Mode="In" Type="Int32" />
+          <Parameter Name="pid" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="proc_RetailLoginCheck" ReturnType="Collection(dbProjectModel.proc_RetailLoginCheck_Result)">
             <Parameter Name="rmail" Mode="In" Type="String" />
             <Parameter Name="pass" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Search_Result" ReturnType="Collection(dbProjectModel.proc_Search_Result_Result)">
-            <Parameter Name="search" Mode="In" Type="String" />
+          <Parameter Name="search" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="proc_Update_Cart">
             <Parameter Name="cartid" Mode="In" Type="Int32" />
@@ -818,7 +818,7 @@
           </FunctionImport>
           <FunctionImport Name="sp_GetAllProduct" ReturnType="Collection(dbProjectModel.sp_GetAllProduct_Result)" />
           <FunctionImport Name="sp_GetPdtByCategory" ReturnType="Collection(dbProjectModel.sp_GetPdtByCategory_Result)">
-            <Parameter Name="cname" Mode="In" Type="String" />
+          <Parameter Name="cname" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_GetPdtByPrice" ReturnType="Collection(dbProjectModel.sp_GetPdtByPrice_Result)">
             <Parameter Name="Lower" Mode="In" Type="Double" />
@@ -831,6 +831,7 @@
           </FunctionImport>
           <FunctionImport Name="sp_SortByPriceAsc" ReturnType="Collection(dbProjectModel.sp_SortByPriceAsc_Result)" />
           <FunctionImport Name="sp_SortByPriceDesc" ReturnType="Collection(dbProjectModel.sp_SortByPriceDesc_Result)" />
+          <FunctionImport Name="sp_getCat" ReturnType="Collection(String)" />
         </EntityContainer>
         <ComplexType Name="proc_DisplayProducts_Result">
           <Property Type="Int32" Name="productid" Nullable="false" />
@@ -1440,6 +1441,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_getCat" FunctionName="dbProjectModel.Store.sp_getCat" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

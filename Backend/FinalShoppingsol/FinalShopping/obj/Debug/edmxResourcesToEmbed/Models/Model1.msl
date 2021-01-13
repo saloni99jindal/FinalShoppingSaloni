@@ -398,5 +398,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getCat" FunctionName="dbProjectModel.Store.sp_getCat" />
   </EntityContainerMapping>
 </Mapping>

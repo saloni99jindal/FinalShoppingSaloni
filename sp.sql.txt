@@ -1,0 +1,92 @@
+create proc sp_SortByPriceAsc
+as
+begin
+    select p.productname,
+	       p.productprice,
+	       p.productquantity,
+	       p.productdescription,
+	       p.productimage1 
+	from tblProduct p join tblRetailer r on p.retailerid = r.retailerid
+	where productstatus = 'accepted' and  
+	approved = 'accepted ' order by(productprice)
+end
+
+
+create proc sp_SortByPriceDesc
+as
+begin
+    select p.productname,
+	       p.productprice,
+	       p.productquantity,
+	       p.productdescription,
+	       p.productimage1 
+	from tblProduct p join tblRetailer r on p.retailerid = r.retailerid
+	where productstatus = 'accepted' and  
+	approved = 'accepted ' order by(productprice)desc
+end
+
+create proc sp_GetAllProduct
+as 
+begin
+    
+	select p.productname,
+	       p.productprice,
+	       p.productquantity,
+	       p.productdescription,
+	       p.productimage1 
+	from tblProduct p join tblRetailer r on p.retailerid = r.retailerid
+	where productstatus = 'accepted' and  
+	approved = 'accepted '
+
+end
+
+create proc sp_GetPdtByPrice(@Lower float, @Upper float)
+as
+begin
+    select p.productname,
+	       p.productprice,
+	       p.productquantity,
+	       p.productdescription,
+	       p.productimage1 
+		   from tblProduct p join tblRetailer r on p.retailerid = r.retailerid
+	where productstatus = 'accepted' and  
+	approved = 'accepted ' and  productprice >@Lower and productprice<=@Upper
+end
+
+
+create proc sp_GetPdtByCategory(@cname nvarchar(max))
+as
+begin
+   select  p.productname,
+	       p.productprice,
+	       p.productquantity,
+	       p.productdescription,
+	       p.productimage1 
+		   from tblProduct p join tblRetailer r on p.retailerid = r.retailerid
+		   join tblCategory c on c.categoryid = p.categoryid
+	where productstatus = 'accepted' and  
+	approved = 'accepted ' and categoryname =@cname
+end
+
+
+
+create proc sp_GetPdtByPriceCategory(@Lower float, @Upper float, @Cname nvarchar(max))
+ as
+ begin
+    select p.productname,
+	       p.productprice,
+	       p.productquantity,
+	       p.productdescription,
+	       p.productimage1 
+		   from tblProduct p join tblRetailer r on p.retailerid = r.retailerid
+		   join tblCategory c on c.categoryid = p.categoryid
+	where productstatus = 'accepted' and  
+	approved = 'accepted ' and categoryname =@cname and  productprice >@Lower and productprice<=@Upper
+ end
+
+
+ create proc sp_getCat
+as
+begin
+   select categoryname from tblCategory
+end

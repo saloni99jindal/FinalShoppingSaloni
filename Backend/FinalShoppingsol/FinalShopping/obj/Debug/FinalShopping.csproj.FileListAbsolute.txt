@@ -87,3 +87,6 @@ G:\LtiShoppingApp\Backend\FinalShoppingsol\FinalShopping\obj\Debug\FinalShopping
 G:\LtiShoppingApp\Backend\FinalShoppingsol\FinalShopping\obj\Debug\FinalShopping.csproj.CopyComplete
 G:\LtiShoppingApp\Backend\FinalShoppingsol\FinalShopping\obj\Debug\FinalShopping.dll
 G:\LtiShoppingApp\Backend\FinalShoppingsol\FinalShopping\obj\Debug\FinalShopping.pdb
+G:\LtiShoppingApp\Backend\FinalShoppingsol\FinalShopping\bin\System.Web.Cors.dll
+G:\LtiShoppingApp\Backend\FinalShoppingsol\FinalShopping\bin\System.Web.Http.Cors.dll
+G:\LtiShoppingApp\Backend\FinalShoppingsol\FinalShopping\bin\System.Web.Http.Cors.xml

@@ -332,6 +332,7 @@
     <Parameter Name="pdescrip" Type="nvarchar(max)" Mode="In" />
   </Function>
   <Function Name="sp_GetAllProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="sp_getCat" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="sp_GetPdtByCategory" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="cname" Type="nvarchar(max)" Mode="In" />
   </Function>

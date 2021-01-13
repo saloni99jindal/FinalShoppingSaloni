@@ -421,6 +421,7 @@
     </FunctionImport>
     <FunctionImport Name="sp_SortByPriceAsc" ReturnType="Collection(dbProjectModel.sp_SortByPriceAsc_Result)" />
     <FunctionImport Name="sp_SortByPriceDesc" ReturnType="Collection(dbProjectModel.sp_SortByPriceDesc_Result)" />
+    <FunctionImport Name="sp_getCat" ReturnType="Collection(String)" />
   </EntityContainer>
   <ComplexType Name="proc_DisplayProducts_Result">
     <Property Type="Int32" Name="productid" Nullable="false" />
